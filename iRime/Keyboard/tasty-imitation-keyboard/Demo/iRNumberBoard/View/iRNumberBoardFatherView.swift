@@ -122,7 +122,7 @@ class iRNumberBoardFatherView: UIView,iRNumberBoardCentreKeysViewvProtocol,iRNum
         if self.delegateAction != nil {
             let stringTitle:String =  (self.delegateAction?.getReturnKeyTitle())!
             if stringTitle != "返回" {
-                viewRightKeys!.btnFour?.setTitle(stringTitle, for: UIControlState())
+                viewRightKeys!.btnFour?.setTitle(stringTitle, for: UIControl.State())
 
             }
             

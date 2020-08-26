@@ -15,7 +15,7 @@ class CandidateTableCellTableViewCell: UITableViewCell {
     
     var txtLabel: UILabel!
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectedBackgroundView = UIView(frame: frame)
@@ -84,7 +84,7 @@ class CandidateTableCellTableViewCell: UITableViewCell {
     class func getCellSizeByText(_ text: String, needAccuracy: Bool) -> CGSize {
         
         func accurateWidth() -> CGFloat {
-            return (text as NSString).boundingRect(with: CGSize(width: CGFloat.infinity, height: getCandidateCellHeight()), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: candidateTextFont], context: nil).width + 20
+            return (text as NSString).boundingRect(with: CGSize(width: CGFloat.infinity, height: getCandidateCellHeight()), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: candidateTextFont], context: nil).width + 20
         }
         
         var textWidth: CGFloat = 0

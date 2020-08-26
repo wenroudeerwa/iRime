@@ -447,17 +447,17 @@ class KeyboardLayout: NSObject, KeyboardKeyProtocol {
             switch model.type {
             case Key.KeyType.shift:
                 if key.shape == nil {
-                    let shiftShape = self.getShape(ShiftShape)
+                    let shiftShape = self.getShape(type(of: ShiftShape()))
                     key.shape = shiftShape
                 }
             case Key.KeyType.backspace:
                 if key.shape == nil {
-                    let backspaceShape = self.getShape(BackspaceShape)
+                    let backspaceShape = self.getShape(type(of: BackspaceShape()))
                     key.shape = backspaceShape
                 }
             case Key.KeyType.keyboardChange:
                 if key.shape == nil {
-                    let globeShape = self.getShape(GlobeShape)
+                    let globeShape = self.getShape(type(of: GlobeShape()))
                     key.shape = globeShape
                 }
             default:
@@ -478,7 +478,7 @@ class KeyboardLayout: NSObject, KeyboardKeyProtocol {
         
         if model.type == Key.KeyType.shift {
             if key.shape == nil {
-                let shiftShape = self.getShape(ShiftShape)
+                let shiftShape = self.getShape(type(of: ShiftShape()))
                 key.shape = shiftShape
             }
             

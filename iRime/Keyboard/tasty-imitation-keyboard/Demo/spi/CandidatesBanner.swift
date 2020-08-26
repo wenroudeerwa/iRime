@@ -8,7 +8,7 @@ let lightModeBannerColor = UIColor.white
 let darkModeBannerBorderColor = UIColor(white: 0.3, alpha: 1)
 let lightModeBannerBorderColor = UIColor(white: 0.6, alpha: 1)
 
-let extraLineTypingTextFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+let extraLineTypingTextFont = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
 
 
 let typingAndCandidatesViewHeightWhenShowTypingCellInExtraLineIsTrue = 28 as CGFloat
@@ -275,7 +275,7 @@ class CandidatesBanner: ExtraView {
 //        }
         
         toolsView.mas_makeConstraints { (make: MASConstraintMaker!) in
-            make.edges.equalTo()(self)?.setInsets(UIEdgeInsetsMake(preeLabelHeight, 0, 0, moreCandidateBtnWidth))
+            make.edges.equalTo()(self)?.setInsets(UIEdgeInsets(top: preeLabelHeight, left: 0, bottom: 0, right: moreCandidateBtnWidth))
         }
         
 //        moreCandidatesButton.snp_makeConstraints { (make) in
@@ -400,7 +400,7 @@ class CandidatesBanner: ExtraView {
         collectionView.backgroundColor = candidatesBannerAppearanceIsDark ? darkModeBannerColor : UIColor.white
         self.backgroundColor = candidatesBannerAppearanceIsDark ? darkModeBannerColor : UIColor.white
 
-        moreCandidatesButton.setImage(candidatesBannerAppearanceIsDark ? UIImage(named: "arrow-down-white") : UIImage(named: "arrow-down-black"), for: UIControlState())
+        moreCandidatesButton.setImage(candidatesBannerAppearanceIsDark ? UIImage(named: "arrow-down-white") : UIImage(named: "arrow-down-black"), for: UIControl.State())
         
         self.layer.borderWidth = 0.5
         self.layer.borderColor = candidatesBannerAppearanceIsDark ? darkModeBannerBorderColor.cgColor : lightModeBannerBorderColor.cgColor
@@ -468,11 +468,11 @@ class CandidatesBanner: ExtraView {
     }
 
     func changeArrowUp() {
-        moreCandidatesButton.setImage(candidatesBannerAppearanceIsDark ? UIImage(named: "arrow-up-white") : UIImage(named: "arrow-up-black"), for: UIControlState())
+        moreCandidatesButton.setImage(candidatesBannerAppearanceIsDark ? UIImage(named: "arrow-up-white") : UIImage(named: "arrow-up-black"), for: UIControl.State())
     }
 
     func changeArrowDown() {
-        moreCandidatesButton.setImage(candidatesBannerAppearanceIsDark ? UIImage(named: "arrow-down-white") : UIImage(named: "arrow-down-black"), for: UIControlState())
+        moreCandidatesButton.setImage(candidatesBannerAppearanceIsDark ? UIImage(named: "arrow-down-white") : UIImage(named: "arrow-down-black"), for: UIControl.State())
     }
     
 }

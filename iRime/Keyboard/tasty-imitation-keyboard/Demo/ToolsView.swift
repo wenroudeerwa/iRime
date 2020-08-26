@@ -43,9 +43,9 @@ class ToolsView: UIView {
         iRimeItem.translatesAutoresizingMaskIntoConstraints = false
         emojiItem.translatesAutoresizingMaskIntoConstraints = false
         
-        iRimeItem.setImage(UIImage(named: "KBSkinToolbar_icon_logo"), for: UIControlState())
+        iRimeItem.setImage(UIImage(named: "KBSkinToolbar_icon_logo"), for: UIControl.State())
         
-        emojiItem.setImage(UIImage(named: "emoji_tab1"), for: UIControlState())
+        emojiItem.setImage(UIImage(named: "emoji_tab1"), for: UIControl.State())
         
         
   
@@ -98,9 +98,8 @@ class ToolsView: UIView {
         
     }
     
-    
-    
-    func tapToolsItem(_ btn:UIButton) {
+
+    @objc func tapToolsItem(_ btn:UIButton) {
         if self.tapToolsItem == nil {
             return;
         }

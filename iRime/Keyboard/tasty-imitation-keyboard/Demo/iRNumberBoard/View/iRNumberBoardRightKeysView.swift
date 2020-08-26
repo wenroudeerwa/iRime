@@ -23,9 +23,9 @@ class iRNumberBoardRightKeysBtn: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let backColor = UIColor.init(red: 204.0/255.0, green: 210.0/255.0, blue: 217.0/255.0, alpha: 1.0)
-        self.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.body), size: NSObject.getFitFontForNumberBoard())
+        self.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFont.TextStyle.body), size: NSObject.getFitFontForNumberBoard())
         self.backgroundColor = backColor;
-        self.setTitleColor(UIColor.black, for: UIControlState())
+        self.setTitleColor(UIColor.black, for: UIControl.State())
         self.setBackgroundImage(UIImage.imageWithColor(UIColor.lightGray), for: .highlighted)
         self.createSubVeiws()
     }
@@ -83,7 +83,7 @@ class iRNumberBoardRightKeysView: UIView {
         
 //        btnOne?.setTitle("退格", forState: .Normal)
         //expression_delete_pressed  filter_delete
-        btnOne?.setImage(UIImage.init(named: "expression_delete"), for: UIControlState())
+        btnOne?.setImage(UIImage.init(named: "expression_delete"), for: UIControl.State())
         btnOne?.setImage(UIImage.init(named: "filter_delete"), for: .highlighted)
         //--约束布局
         btnOne?.mas_makeConstraints({ (maker:MASConstraintMaker!) in
@@ -103,7 +103,7 @@ class iRNumberBoardRightKeysView: UIView {
         btnTwo?.addTarget(self, action:#selector(iRNumberBoardRightKeysView.btnEndAction(_:)) , for: .touchDragExit)
         btnTwo?.addTarget(self, action:#selector(iRNumberBoardRightKeysView.btnEndAction(_:)) , for: .touchDragEnter)
 
-        btnTwo?.setTitle("空格", for: UIControlState())
+        btnTwo?.setTitle("空格", for: UIControl.State())
         //--约束布局
         btnTwo?.mas_makeConstraints({ (maker:MASConstraintMaker!) in
             maker.left.equalTo()(self)
@@ -116,7 +116,7 @@ class iRNumberBoardRightKeysView: UIView {
         self.addSubview(btnThree!)
         //--属性设置
         btnThree?.addTarget(self, action:#selector(iRNumberBoardRightKeysView.btnThreeAction(_:)) , for: .touchUpInside)
-        btnThree?.setTitle("@", for: UIControlState())
+        btnThree?.setTitle("@", for: UIControl.State())
         //--约束布局
         btnThree?.mas_makeConstraints({ (maker:MASConstraintMaker!) in
             maker.left.equalTo()(self)
@@ -129,7 +129,7 @@ class iRNumberBoardRightKeysView: UIView {
         self.addSubview(btnFour!)
         //--属性设置
         btnFour?.addTarget(self, action:#selector(iRNumberBoardRightKeysView.btnFourAction(_:)) , for: .touchUpInside)
-        btnFour?.setTitle("换行", for: UIControlState())
+        btnFour?.setTitle("换行", for: UIControl.State())
         //--约束布局
         btnFour?.mas_makeConstraints({ (maker:MASConstraintMaker!) in
             maker.left.equalTo()(self)
@@ -139,26 +139,26 @@ class iRNumberBoardRightKeysView: UIView {
         })
     }
     
-    func btnOneStartAction(_ btn:iRNumberBoardRightKeysBtn) -> Void {
+    @objc  func btnOneStartAction(_ btn:iRNumberBoardRightKeysBtn) -> Void {
         self.timer = Timer.scheduledTimer(timeInterval: timeRepeat, target: self, selector: #selector(iRNumberBoardRightKeysView.repeatBtnOneAction), userInfo: nil, repeats: true)
         self.timer?.fire()
     }
-    func btnEndAction(_ btn:iRNumberBoardRightKeysBtn) -> Void {
+    @objc func btnEndAction(_ btn:iRNumberBoardRightKeysBtn) -> Void {
         self.timer?.invalidate()
         self.timer = nil
     }
-    func repeatBtnOneAction() -> Void {
+    @objc func repeatBtnOneAction() -> Void {
         
         if self.delegateAction != nil {
             self.delegateAction?.deleteOneOfIRNumberBoardRightKeysView()
         }
         
     }
-    func btnTwoStartAction(_ btn:iRNumberBoardRightKeysBtn) -> Void {
+    @objc func btnTwoStartAction(_ btn:iRNumberBoardRightKeysBtn) -> Void {
         self.timer = Timer.scheduledTimer(timeInterval: timeRepeat, target: self, selector: #selector(iRNumberBoardRightKeysView.repeatBtnTwoAction), userInfo: nil, repeats: true)
         self.timer?.fire()
     }
-    func repeatBtnTwoAction() -> Void {
+    @objc func repeatBtnTwoAction() -> Void {
         
         if self.delegateAction != nil {
             self.delegateAction?.passTextOfIRNumberBoardRightKeysView(" ")
@@ -170,12 +170,12 @@ class iRNumberBoardRightKeysView: UIView {
 //           self.delegateAction?.passTextOfIRNumberBoardRightKeysView(" ")
 //        }
 //    }
-    func btnThreeAction(_ btn:iRNumberBoardRightKeysBtn) -> Void {
+    @objc func btnThreeAction(_ btn:iRNumberBoardRightKeysBtn) -> Void {
         if self.delegateAction != nil {
             self.delegateAction?.passTextOfIRNumberBoardRightKeysView("@")
         }
     }
-    func btnFourAction(_ btn:iRNumberBoardRightKeysBtn) -> Void {
+    @objc  func btnFourAction(_ btn:iRNumberBoardRightKeysBtn) -> Void {
         if self.delegateAction != nil {
             self.delegateAction?.passTextOfIRNumberBoardRightKeysView("\n")
         }

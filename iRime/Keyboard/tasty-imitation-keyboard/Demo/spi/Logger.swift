@@ -96,7 +96,8 @@ class Logger {
         let info = infoPointer.move()
         
         // deallocate pointer
-        infoPointer.deallocate(capacity: 1)
+//        infoPointer.deallocate(capacity: 1)
+        infoPointer.deallocate()
         
         // check return value for success / failure
         if kerr == KERN_SUCCESS {

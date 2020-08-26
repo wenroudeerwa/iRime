@@ -317,7 +317,7 @@ class Catboard: KeyboardViewController,RimeNotificationDelegate, UICollectionVie
         {
            print("我要切换到数字键盘喽")
            self.viewNumberBoardView.isHidden = false
-           self.view.bringSubview(toFront: self.viewNumberBoardView)
+            self.view.bringSubviewToFront(self.viewNumberBoardView)
         }
         else{
             self.modePush(toMode!)
@@ -377,7 +377,7 @@ class Catboard: KeyboardViewController,RimeNotificationDelegate, UICollectionVie
             }
             let c: XRimeContext = RimeWrapper.context(forSession: rimeSessionId_)
             var preedite:String? = c.composition.preeditedText
-            if preedite?.characters.count > 0{
+            if preedite?.count > 0{
                 
                 preedite = preedite!.replacingOccurrences(of: " ", with: "")//去掉所有空格
                 
@@ -549,12 +549,12 @@ class Catboard: KeyboardViewController,RimeNotificationDelegate, UICollectionVie
     }
     
     
-    func spaceSwipLeft(_ gesture: UISwipeGestureRecognizer) {
+    @objc func spaceSwipLeft(_ gesture: UISwipeGestureRecognizer) {
         
         print("swip left ...")
     }
     
-    func spaceSwipRigth(_ gesture: UISwipeGestureRecognizer) {
+    @objc func spaceSwipRigth(_ gesture: UISwipeGestureRecognizer) {
         
         print("swip rigth...")
     }
@@ -592,11 +592,11 @@ class Catboard: KeyboardViewController,RimeNotificationDelegate, UICollectionVie
                 if self.isShowEmojiView {
                     self.exitEmojiView()
                     btn.backgroundColor = UIColor.white
-                    btn.setImage(UIImage(named: "emoji_tab1"), for: UIControlState())
+                    btn.setImage(UIImage(named: "emoji_tab1"), for: UIControl.State())
                 }else{
                     self.showEmojiView()
                     btn.backgroundColor = UIColor.gray
-                    btn.setImage(UIImage(named: "emoji_tab1Press"), for: UIControlState())
+                    btn.setImage(UIImage(named: "emoji_tab1Press"), for: UIControl.State())
 
                 }
             }
@@ -606,7 +606,7 @@ class Catboard: KeyboardViewController,RimeNotificationDelegate, UICollectionVie
     }
     
     
-    func openURL(_ url: String) {
+    @objc func openURL(_ url: String) {
         var responder: UIResponder = self
         while responder.next != nil {
             responder = responder.next!

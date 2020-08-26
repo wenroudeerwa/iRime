@@ -5,9 +5,9 @@ func getCandidateCellHeight() -> CGFloat {
     return showTypingCellInExtraLine ? typingAndCandidatesViewHeightWhenShowTypingCellInExtraLineIsTrue : typingAndCandidatesViewHeightWhenShowTypingCellInExtraLineIsFalse
 }
 
-var candidateTextFont = UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.body), size: 24)
+var candidateTextFont = UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFont.TextStyle.body), size: 24)
 
-let oneChineseGlyphWidth = ("镜" as NSString).boundingRect(with: CGSize(width: CGFloat.infinity, height: candidatesTableCellHeight), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: candidateTextFont], context: nil).width
+let oneChineseGlyphWidth = ("镜" as NSString).boundingRect(with: CGSize(width: CGFloat.infinity, height: candidatesTableCellHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: candidateTextFont], context: nil).width
 
 class CandidateCell: UICollectionViewCell {
     
@@ -49,7 +49,7 @@ class CandidateCell: UICollectionViewCell {
     class func getCellSizeByText(_ text: String, needAccuracy: Bool) -> CGSize {
         
         func accurateWidth() -> CGFloat {
-            return (text as NSString).boundingRect(with: CGSize(width: CGFloat.infinity, height: getCandidateCellHeight()), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: candidateTextFont], context: nil).width + 20
+            return (text as NSString).boundingRect(with: CGSize(width: CGFloat.infinity, height: getCandidateCellHeight()), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: candidateTextFont], context: nil).width + 20
         }
         
         var textWidth: CGFloat = 0

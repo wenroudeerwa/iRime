@@ -57,9 +57,9 @@ class iRNumberBoardCentreKeysBtn: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let backColor = UIColor.white;//UIColor.init(red: 204.0/255.0, green: 210.0/255.0, blue: 217.0/255.0, alpha: 1.0)
-        self.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.body), size: NSObject.getFitFontForNumberBoard())
+        self.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFont.TextStyle.body), size: NSObject.getFitFontForNumberBoard())
         self.backgroundColor = backColor;
-        self.setTitleColor(UIColor.black, for: UIControlState())
+        self.setTitleColor(UIColor.black, for: UIControl.State())
         self.setBackgroundImage(UIImage.imageWithColor(UIColor.lightGray), for: .highlighted)
     }
     
@@ -69,19 +69,19 @@ class iRNumberBoardCentreKeysBtn: UIButton {
     
     func setItemTitle(_ i:Int) -> Void {
         if i == 9 {
-            self.setTitle("返回", for: UIControlState())
+            self.setTitle("返回", for: UIControl.State())
         }
         else if i == 10
         {
-            self.setTitle("0", for: UIControlState())
+            self.setTitle("0", for: UIControl.State())
         }
         else if i == 11
         {
-            self.setTitle(".", for: UIControlState())
+            self.setTitle(".", for: UIControl.State())
         }
         else
         {
-            self.setTitle("\(i+1)", for: UIControlState())
+            self.setTitle("\(i+1)", for: UIControl.State())
         }
     }
 
@@ -205,7 +205,7 @@ class iRNumberBoardCentreKeysView: UIView {
         
     }
     
-    func btnItemAction(_ btn:UIButton) -> Void {
+    @objc func btnItemAction(_ btn:UIButton) -> Void {
         if btn.tag == 9 {
             if self.delegateAction != nil {
                 self.delegateAction?.callBackOfCentreToHiddenNumberKeyBoard()

@@ -22,9 +22,9 @@ class iRNumberBoardLeftKeysBtn: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let backColor = UIColor.init(red: 204.0/255.0, green: 210.0/255.0, blue: 217.0/255.0, alpha: 1.0)
-        self.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.body), size: NSObject.getFitFontForNumberBoard())
+        self.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFont.TextStyle.body), size: NSObject.getFitFontForNumberBoard())
         self.backgroundColor = backColor;
-        self.setTitleColor(UIColor.black, for: UIControlState())
+        self.setTitleColor(UIColor.black, for: UIControl.State())
         self.setBackgroundImage(UIImage.imageWithColor(UIColor.lightGray), for: .highlighted)
         self.createSubVeiws()
     }
@@ -73,7 +73,7 @@ class iRNumberBoardLeftKeysView: UIView {
         self.addSubview(btnOne!)
         //--属性设置
         btnOne?.addTarget(self, action:#selector(iRNumberBoardLeftKeysView.btnAction(_:)) , for: .touchUpInside)
-        btnOne?.setTitle("+", for: UIControlState())
+        btnOne?.setTitle("+", for: UIControl.State())
         //--约束布局
         btnOne?.mas_makeConstraints({ (maker:MASConstraintMaker!) in
             maker.left.equalTo()(self)
@@ -86,7 +86,7 @@ class iRNumberBoardLeftKeysView: UIView {
         self.addSubview(btnTwo!)
         //--属性设置
         btnTwo?.addTarget(self, action:#selector(iRNumberBoardLeftKeysView.btnAction(_:)) , for: .touchUpInside)
-        btnTwo?.setTitle("-", for: UIControlState())
+        btnTwo?.setTitle("-", for: UIControl.State())
         //--约束布局
         btnTwo?.mas_makeConstraints({ (maker:MASConstraintMaker!) in
             maker.left.equalTo()(self)
@@ -99,7 +99,7 @@ class iRNumberBoardLeftKeysView: UIView {
         self.addSubview(btnThree!)
         //--属性设置
         btnThree?.addTarget(self, action:#selector(iRNumberBoardLeftKeysView.btnAction(_:)) , for: .touchUpInside)
-        btnThree?.setTitle("/", for: UIControlState())
+        btnThree?.setTitle("/", for: UIControl.State())
         //--约束布局
         btnThree?.mas_makeConstraints({ (maker:MASConstraintMaker!) in
             maker.left.equalTo()(self)
@@ -112,7 +112,7 @@ class iRNumberBoardLeftKeysView: UIView {
         self.addSubview(btnFour!)
         //--属性设置
         btnFour?.addTarget(self, action:#selector(iRNumberBoardLeftKeysView.btnAction(_:)) , for: .touchUpInside)
-        btnFour?.setTitle("*", for: UIControlState())
+        btnFour?.setTitle("*", for: UIControl.State())
         //--约束布局
         btnFour?.mas_makeConstraints({ (maker:MASConstraintMaker!) in
             maker.left.equalTo()(self)
@@ -125,7 +125,7 @@ class iRNumberBoardLeftKeysView: UIView {
         self.addSubview(btnFive!)
         //--属性设置
         btnFive?.addTarget(self, action:#selector(iRNumberBoardLeftKeysView.btnAction(_:)) , for: .touchUpInside)
-        btnFive?.setTitle(":", for: UIControlState())
+        btnFive?.setTitle(":", for: UIControl.State())
         //--约束布局
         btnFive?.mas_makeConstraints({ (maker:MASConstraintMaker!) in
             maker.left.equalTo()(self)
@@ -136,7 +136,7 @@ class iRNumberBoardLeftKeysView: UIView {
     }
     
     
-    func btnAction(_ btn:iRNumberBoardLeftKeysBtn) -> Void {
+    @objc func btnAction(_ btn:iRNumberBoardLeftKeysBtn) -> Void {
         if (self.delegateToCallBack != nil) {
             self.delegateToCallBack?.iRNumberBoardLeftKeysViewPassText((btn.titleLabel?.text)!)
         }
